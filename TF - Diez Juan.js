@@ -69,3 +69,16 @@ $(document).ready(function() {
 
     });
 });
+
+
+$(document).ready(function() {
+
+  var edad = $("#edad").val();
+  
+   if(edad<18){
+    alert("Usted es menor de edad, no puede continuar con el registro")
+   } else if (edad>100){
+    alert("Por favor ingresar una edad válida")
+   }
+
+});
