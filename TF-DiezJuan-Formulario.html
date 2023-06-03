@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title> Trabajo Final - Diez Juan </title>
+
+        <link rel="stylesheet" href="TF-DiezJuan.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    </head>
+
+    <body>
+
+        <h1>REGISTRO USUARIO</h1>
+
+        <form id="formulario">
+
+            <label for="nombre"> Nombre: </label>
+            <input type="text" id="nombre" class="caja" required>
+                <br/>
+            <label for="apellido"> Apellido: </label>
+            <input type="text" id="apellido" class="caja" required>
+                <br/>
+            <label for="edad"> Edad: </label>
+            <input type="number" id="edad" class="caja" required>
+                <br/>
+            <label for="email"> Correo Electronico: </label>
+            <input type="email" id="email" class="caja" required>
+                <br/>
+            <label for="pais"> Pais: </label>
+                <br/>
+            <select id="selectPaises">
+                <option value="">Seleccione el pais</option>
+            </select>
+                <br/><br/>
+            <label for="provincias"> Provincia: </label>
+                <br/>
+            <select id="selectProvincias">
+                <option value="">Seleccione la provincia</option>
+            </select>
+                <br/><br/>
+            <label for="ciudad"> Ciudad: </label>
+            <br/>
+            <select id="selectCiudades">
+                <option value="">Seleccione la ciudad</option>
+            </select>
+                <br/><br/>
+                <br/><br/><br/>
+            <label for="nombreUsuario"> Nombre Usuario: </label>
+            <input type="text" id="nombreUsuario" class="caja" required>
+                <br/>
+            <label for="contrasenia"> Contraseña: </label>
+            <input type="password" id="contrasenia" class="caja" required>
+                <br/>
+            <label for="rcontrasenia"> Repetir Contraseña: </label>
+            <input type="password" id="rcontrasenia" class="caja" required>
+                <br/>
+            <button type="submit" id="boton">Validar</button>
+
+        </form>
+
+
+        <footer>
+            <script src = "TF-DiezJuan.js"></script>
+        </footer>
+
+    </body>
+</html>
+
+

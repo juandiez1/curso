@@ -1,0 +1,12 @@
+/* Trabajo Final - Diez Juan - Archivo CSS */
+
+.caja {
+    display:block;
+}
+
+.menu {
+    width:100%;
+    background: rgb(93, 134, 205);
+    list-style:none;
+    display: inline-flex;
+}
