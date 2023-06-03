@@ -1,5 +1,32 @@
 // TF Diez Juan
 
+
+$('#boton').click(function() { //Validaciones al hacer click en boton
+
+  $(document).ready(function() {
+
+    var nombre = $("#nombre").val();
+    var apellido = $("#apellido").val();
+    var edad = $("#edad").val();
+    var email = $("#email").val();
+    var nombreUsuario = $("#nombreUsuario").val();
+    var contrasenia = $("#contrasenia").val();
+    var rcontrasenia = $("#rcontrasenia").val();
+
+    
+    if( nombre==="" || apellido==="" || edad==="" || email==="" || nombreUsuario==="" || contrasenia==="" || rcontrasenia===""){ //Verificacion de vacios
+      alert("Por favor complete los campos obligatorios (*)")
+    }else if(edad<18){ //verificacion de edad
+        alert("Usted es menor de edad, no puede continuar con el registro")
+          } else if (edad>100){
+          alert("Por favor ingresar una edad válida")
+              }
+  
+  });
+
+});
+
+
 $(document).ready(function() {
     
     $.ajax({
@@ -71,14 +98,3 @@ $(document).ready(function() {
 });
 
 
-$(document).ready(function() {
-
-  var edad = $("#edad").val();
-  
-   if(edad<18){
-    alert("Usted es menor de edad, no puede continuar con el registro")
-   } else if (edad>100){
-    alert("Por favor ingresar una edad válida")
-   }
-
-});
