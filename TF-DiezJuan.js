@@ -1,6 +1,6 @@
 // TF Diez Juan
 
-
+// JS de FORMULARIO DE REGISTRO-------------------
 $('#boton').click(function() { //Validaciones al hacer click en boton
 
   $(document).ready(function() {
@@ -103,4 +103,23 @@ $(document).ready(function() {
     });
 });
 
+
+// JS de JUEGO DE ADIVINANZAS-------------------
+
+$(document).ready(function() {
+  $("#Adivinanzas").submit(function(event) {
+    event.preventDefault();
+    
+  var opSeleccionada = $("input[name='opcion']:checked").val();
+
+  if(opSeleccionada === "PARANÁ"){
+    alert("CORRECTO");
+  } else if(opSeleccionada === "SALADO"){
+    alert("INCORRECTO");
+  } else if(opSeleccionada === "URUGUAY"){
+    alert("INCORRECTO");
+  }
+
+  });
+});
 
