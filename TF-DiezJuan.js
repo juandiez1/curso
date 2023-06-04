@@ -16,16 +16,15 @@ $('#boton').click(function() { //Validaciones al hacer click en boton
     
     if( nombre==="" || apellido==="" || edad==="" || email==="" || nombreUsuario==="" || contrasenia==="" || rcontrasenia===""){ //Verificacion de vacios
       alert("Por favor complete los campos obligatorios (*)");
-    }else if(edad<18){ //verificacion de edad
-        alert("Usted es menor de edad, no puede continuar con el registro");
-          } else if(edad>100){
-          alert("Por favor ingresar una edad válida");
-              } else if(contrasenia!==rcontrasenia){ //verificacion coincidencia de contraseñas
-                alert("Las constraseñas propuestas no coinciden");
-                  } else {
-                    alert("USTED SE REGISTRÓ EXITOSAMENTE!") //Registro OK
-                    }
-  
+        }else if(edad<18){ //verificacion de edad
+          alert("Usted es menor de edad, no puede continuar con el registro");
+            }else if(edad>100){
+              alert("Por favor ingresar una edad válida");
+                }else if(contrasenia!==rcontrasenia){ //verificacion coincidencia de contraseñas
+                  alert("Las constraseñas propuestas no coinciden");
+                    }else {
+                      alert("USTED SE REGISTRÓ EXITOSAMENTE!") //Registro OK
+                      }
   });
 
 });
