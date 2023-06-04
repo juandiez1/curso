@@ -15,12 +15,16 @@ $('#boton').click(function() { //Validaciones al hacer click en boton
 
     
     if( nombre==="" || apellido==="" || edad==="" || email==="" || nombreUsuario==="" || contrasenia==="" || rcontrasenia===""){ //Verificacion de vacios
-      alert("Por favor complete los campos obligatorios (*)")
+      alert("Por favor complete los campos obligatorios (*)");
     }else if(edad<18){ //verificacion de edad
-        alert("Usted es menor de edad, no puede continuar con el registro")
-          } else if (edad>100){
-          alert("Por favor ingresar una edad válida")
-              }
+        alert("Usted es menor de edad, no puede continuar con el registro");
+          } else if(edad>100){
+          alert("Por favor ingresar una edad válida");
+              } else if(contrasenia!==rcontrasenia){ //verificacion coincidencia de contraseñas
+                alert("Las constraseñas propuestas no coinciden");
+                  } else {
+                    alert("USTED SE REGISTRÓ EXITOSAMENTE!") //Registro OK
+                    }
   
   });
 
@@ -29,6 +33,7 @@ $('#boton').click(function() { //Validaciones al hacer click en boton
 
 $(document).ready(function() {
     
+  //Select llamando a la api de paises del mundo
     $.ajax({
       url: "https://restcountries.com/v2/all",
       type: "GET",
@@ -53,6 +58,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 
+  //Select llamando a las provincias de ARG
     $.ajax({
       url: "https://apis.datos.gob.ar/georef/api/provincias",
       type: "GET",
@@ -77,6 +83,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 
+  //Select llamando a las ciudades de La Pampa
     $.ajax({
       url: "https://apis.datos.gob.ar/georef/api/municipios?provincia=42&campos=id,nombre&max=100",
       type: "GET",
