@@ -107,19 +107,120 @@ $(document).ready(function() {
 // JS de JUEGO DE ADIVINANZAS-------------------
 
 $(document).ready(function() {
-  $("#Adivinanzas").submit(function(event) {
-    event.preventDefault();
-    
-  var opSeleccionada = $("input[name='opcion']:checked").val();
 
-  if(opSeleccionada === "PARANÁ"){
-    alert("CORRECTO");
-  } else if(opSeleccionada === "SALADO"){
-    alert("INCORRECTO");
-  } else if(opSeleccionada === "URUGUAY"){
-    alert("INCORRECTO");
-  }
+  //ADIVINANZA 1
+  var intentos1 = 0;
+  var puntuacion1 = 10;
+
+  $('#check1').click(function() {
+    
+    var opSeleccionada1 = $("input[name='opcion1']:checked").val();  //Toma el valor del radio seleccionado
+
+
+    if(opSeleccionada1){
+
+      if(opSeleccionada1 === "PARANÁ"){
+        alert("CORRECTO");
+        if(intentos1 === 0){
+        alert("Su puntuacion es: " + puntuacion1 + ". Continue con la siguiente adivinanza");
+        } else if(intentos1 === 1){
+        puntuacion1=5;
+        alert("Su puntuacion es: " + puntuacion1 + ". Continue con la siguiente adivinanza");
+        } else {
+        puntuacion1=0;
+        alert("Su puntuacion es: " + puntuacion1 + ". Continue con la siguiente adivinanza");
+        }
+
+      } else {
+      alert("INCORRECTO")
+      }
+
+      intentos1++;
+
+    } else{
+    alert("Seleccione una opcion antes de presionar CHECK")
+    }
 
   });
-});
 
+
+  //ADIVINANZA 2
+  var intentos2 = 0;
+  var puntuacion2 = 10;
+
+  $('#check2').click(function() {
+    
+    var opSeleccionada2 = $("input[name='opcion2']:checked").val();  //Toma el valor del radio seleccionado
+
+
+    if(opSeleccionada2){
+
+      if(opSeleccionada2 === "ÑANDÚ"){
+        alert("CORRECTO");
+        if(intentos2 === 0){
+        alert("Su puntuacion es: " + puntuacion2 + ". Continue con la siguiente adivinanza");
+        } else if(intentos2 === 1){
+        puntuacion2=5;
+        alert("Su puntuacion es: " + puntuacion2 + ". Continue con la siguiente adivinanza");
+        } else {
+        puntuacion2=0;
+        alert("Su puntuacion es: " + puntuacion2 + ". Continue con la siguiente adivinanza");
+        }
+
+      } else {
+      alert("INCORRECTO")
+      }
+
+      intentos2++;
+
+    } else{
+    alert("Seleccione una opcion antes de presionar CHECK")
+    }
+
+  });
+
+
+
+  //ADIVINANZA 3
+  var intentos3 = 0;
+  var puntuacion3 = 10;
+
+  $('#check3').click(function() {
+    
+    var opSeleccionada3 = $("input[name='opcion3']:checked").val();  //Toma el valor del radio seleccionado
+
+
+    if(opSeleccionada3){
+
+      if(opSeleccionada3 === "CAFÉ"){
+        alert("CORRECTO");
+        if(intentos3 === 0){
+        alert("Su puntuacion es: " + puntuacion3 + ". Continue con la siguiente adivinanza");
+        } else if(intentos3 === 1){
+        puntuacion3=5;
+        alert("Su puntuacion es: " + puntuacion3 + ". Continue con la siguiente adivinanza");
+        } else {
+        puntuacion3=0;
+        alert("Su puntuacion es: " + puntuacion3 + ". Continue con la siguiente adivinanza");
+        }
+
+      } else {
+      alert("INCORRECTO")
+      }
+
+      intentos3++;
+
+    } else{
+    alert("Seleccione una opcion antes de presionar CHECK")
+    }
+
+  });
+
+
+  //RESULTADO
+  $('#resultado').click(function() { 
+
+    var resultado = puntuacion1 + puntuacion2 + puntuacion3;
+    $('#res').text("La puntuacion final es: " + resultado);
+  });
+});

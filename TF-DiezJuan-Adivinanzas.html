@@ -3,11 +3,16 @@
         <title> Trabajo Final - Diez Juan </title>
 
         <link rel="stylesheet" href="TF-DiezJuan.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     </head>
 
     <body>
  
         <h1>JUEGO DE ADIVINANZAS</h1>
+        <h3>Bienvenido, este es el juego de las adivinanzas,tendras tres intentos ya que tendras tres opciones para seleccionar, si aciertas en el primer intento tu puntuacion será de 10 puntos por adivinanza, si aciertas en el segundo intento tu puntuacion será de 5 puntos por adivinanza, si aciertas en el tercer intento tu puntuacion será de 0 puntos por adivinanza. Recuerda marcar la opcion correcta, y seguido CHECK para validarla. BUENA SUERTE!</h3>
+
+        <form id="Adivinanzas">
 
         <p><b>Adivinanza 1:</b><br/><br/>
             Soy un río imponente,
@@ -15,11 +20,11 @@
             en el norte de Argentina
             me deslizo entre colinas.
             ¿Cuál es mi nombre?</p>
-            <input type="radio" name="opcion" id="A1op1" value="PARANÁ">PARANÁ --
-            <input type="radio" name="opcion" id="A1op2" value="SALADO">SALADO
-            <input type="radio" name="opcion" id="A1op3" value="URUGUAY">URUGUAY
+            <input type="radio" name="opcion1" id="A1op1" value="PARANÁ">PARANÁ
+            <input type="radio" name="opcion1" id="A1op2" value="SALADO">SALADO
+            <input type="radio" name="opcion1" id="A1op3" value="URUGUAY">URUGUAY
             <br/>
-            <input type="submit" value="CHECK">
+            <button type="button" id="check1">CHECK</button>
         <br/><br/>
 
         <p><b>Adivinanza 2:</b><br/><br/>
@@ -28,11 +33,12 @@
             Con mi graznido característico,
             todos me saben identificar.
             ¿Qué animal soy?</p>
-            <input type="radio" name="opcion" id="A2op1" value="GUANACO">GUANACO
-            <input type="radio" name="opcion" id="A2op2" value="ÑANDÚ">ÑANDÚ --
-            <input type="radio" name="opcion" id="A2op3" value="YACARÉ">YACARÉ
-
-        <br/><br/>
+            <input type="radio" name="opcion2" id="A2op1" value="GUANACO">GUANACO
+            <input type="radio" name="opcion2" id="A2op2" value="ÑANDÚ">ÑANDÚ
+            <input type="radio" name="opcion2" id="A2op3" value="YACARÉ">YACARÉ
+            <br/>
+            <button type="button" id="check2">CHECK</button>
+            <br/><br/>
 
         <p><b>Adivinanza 3:</b><br/><br/>
             Con su aroma dulce y fragante,
@@ -40,11 +46,18 @@
             Negro y caliente, me das energía,
             sin ti no puedo comenzar.
             ¿Qué soy?</p>
-            <input type="radio" name="opcion" id="A3op1" value="MATE">MATE
-            <input type="radio" name="opcion" id="A3op2" value="CAFÉ">CAFÉ --
-            <input type="radio" name="opcion" id="A3op3" value="TÉ">TÉ
-
+            <input type="radio" name="opcion3" id="A3op1" value="MATE">MATE
+            <input type="radio" name="opcion3" id="A3op2" value="CAFÉ">CAFÉ
+            <input type="radio" name="opcion3" id="A3op3" value="TÉ">TÉ
+            <br/>
+            <button type="button" id="check3">CHECK</button>
         <br/><br/>
+        
+        <button type="button" id="resultado">RESULTADO</button>
+        <div id="res"></div>
+        
+
+        </form>
 
         <footer>
             <script src = "TF-DiezJuan.js"></script>
