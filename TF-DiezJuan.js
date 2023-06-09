@@ -23,6 +23,8 @@ $('#boton').click(function() { //Validaciones al hacer click en boton
                 }else if(contrasenia!==rcontrasenia){ //verificacion coincidencia de contraseñas
                   alert("Las constraseñas propuestas no coinciden");
                     }else {
+                      localStorage.setItem("nombreUsuario",nombreUsuario);
+                      localStorage.setItem("contrasenia",contrasenia);                  
                       alert("USTED SE REGISTRÓ EXITOSAMENTE!") //Registro OK
                       }
   });
@@ -104,7 +106,32 @@ $(document).ready(function() {
 });
 
 
+
+
 // JS de JUEGO DE ADIVINANZAS-------------------
+
+//INICIO DE SESION
+$('#botonLogin').click(function() { //Validaciones al hacer click en boton
+  $(document).ready(function(){
+
+      //Obtengo los valores ingresados
+      var nombreUsuario = $("#nombreUsuario").val();
+      var contrasenia = $("#contrasenia").val();
+
+      //Obtengo los valores registrados con LocalStorage
+      var nombreUsuarioRegistrado = localStorage.getItem("nombreUsuario");
+      var contraseniaRegristrada = localStorage.getItem("contrasenia");
+
+      if(nombreUsuario === nombreUsuarioRegistrado && contrasenia === contraseniaRegristrada){
+        alert("Usted inicio sesion exitosamente!");
+      }   else {
+        alert("Nombre de usuario o constraseña incorrectos");
+      }
+
+  });
+});
+
+
 
 $(document).ready(function() {
 
@@ -224,3 +251,5 @@ $(document).ready(function() {
     $('#res').text("La puntuacion final es: " + resultado);
   });
 });
+
+
