@@ -32,6 +32,11 @@ $('#boton').click(function() { //Validaciones al hacer click en boton
 });
 
 
+$('#botonMenu').click(function() {  //Validacion boton para volver al menu
+  window.location.href = "TF-DiezJuan-Menu.html";
+});
+
+
 $(document).ready(function() {
     
   //Select llamando a la api de paises del mundo
@@ -110,7 +115,7 @@ $(document).ready(function() {
 
 // JS de JUEGO DE ADIVINANZAS-------------------
 
-//INICIO DE SESION
+//INICIO DE SESION EN ADIVINANZAS1
 $('#botonLogin').click(function() { //Validaciones al hacer click en boton
   $(document).ready(function(){
 
@@ -124,6 +129,7 @@ $('#botonLogin').click(function() { //Validaciones al hacer click en boton
 
       if(nombreUsuario === nombreUsuarioRegistrado && contrasenia === contraseniaRegristrada){
         alert("Usted inicio sesion exitosamente!");
+        window.location.href = "TF-DiezJuan-Adivinanzas2.html"; //Redirige al juego (ADIVINANZAS2)
       }   else {
         alert("Nombre de usuario o constraseña incorrectos");
       }
@@ -133,7 +139,9 @@ $('#botonLogin').click(function() { //Validaciones al hacer click en boton
 
 
 
+//ARCHIVO ADIVINANZAS 2
 $(document).ready(function() {
+
 
   //ADIVINANZA 1
   var intentos1 = 0;
@@ -250,6 +258,8 @@ $(document).ready(function() {
     var resultado = puntuacion1 + puntuacion2 + puntuacion3;
     $('#res').text("La puntuacion final es: " + resultado);
   });
+
+
 });
 
 
