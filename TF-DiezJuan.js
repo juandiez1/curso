@@ -1,36 +1,41 @@
 // TF Diez Juan
 
 // JS de FORMULARIO DE REGISTRO-------------------
-$('#boton').click(function() { //Validaciones al hacer click en boton
+$(document).ready(function() {
+  'use strict';
 
-  $(document).ready(function() {
+  // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+  var forms = $('.needs-validation');
 
-    var nombre = $("#nombre").val();
-    var apellido = $("#apellido").val();
-    var edad = $("#edad").val();
-    var email = $("#email").val();
-    var nombreUsuario = $("#nombreUsuario").val();
-    var contrasenia = $("#contrasenia").val();
-    var rcontrasenia = $("#rcontrasenia").val();
+  // Bucle sobre ellos y evitar el envío
+  forms.each(function() {
+    $(this).on('submit', function(event) {
 
-    
-    if( nombre==="" || apellido==="" || edad==="" || email==="" || nombreUsuario==="" || contrasenia==="" || rcontrasenia===""){ //Verificacion de vacios
-      alert("Por favor complete los campos obligatorios (*)");
-        }else if(edad<18){ //verificacion de edad
-          alert("Usted es menor de edad, no puede continuar con el registro");
-            }else if(edad>100){
-              alert("Por favor ingresar una edad válida");
-                }else if(contrasenia!==rcontrasenia){ //verificacion coincidencia de contraseñas
-                  alert("Las constraseñas propuestas no coinciden");
-                    }else {
-                      localStorage.setItem("nombreUsuario",nombreUsuario);
-                      localStorage.setItem("contrasenia",contrasenia);                  
-                      alert("USTED SE REGISTRÓ EXITOSAMENTE!") //Registro OK
-                      }
+      if (!this.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+
+      $(this).addClass('was-validated');
+    });
   });
-
 });
 
+
+$('#boton').click(function() {  
+  var nombre = $("#nombre").val();
+  var apellido = $("#apellido").val();
+  var edad = $("#edad").val();
+  var email = $("#email").val();
+  var nombreUsuario = $("#nombreUsuario").val();
+  var contrasenia = $("#contrasenia").val();
+  var rcontrasenia = $("#rcontrasenia").val();
+
+  localStorage.setItem("nombreUsuario",nombreUsuario);
+  localStorage.setItem("contrasenia",contrasenia);
+  
+});
 
 $('#botonMenu').click(function() {  //Validacion boton para volver al menu
   window.location.href = "TF-DiezJuan-Menu.html";
