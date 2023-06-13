@@ -143,23 +143,36 @@ $(document).ready(function() {
 // JS de JUEGO DE ADIVINANZAS-------------------
 
 //INICIO DE SESION EN ADIVINANZAS1
-$('#botonLogin').click(function() { //Validaciones al hacer click en boton
-  $(document).ready(function(){
+$(document).ready(function() {
+  $('#formularioLogin').submit(function(event) {
+    event.preventDefault();
 
-      //Obtengo los valores ingresados
-      var nombreUsuario = $("#nombreUsuario").val();
-      var contrasenia = $("#contrasenia").val();
+    //Obtengo los valores ingresados
+    var nombreUsuario = $("#nombreUsuario").val();
+    var contrasenia = $("#contrasenia").val();
 
-      //Obtengo los valores registrados con LocalStorage
-      var nombreUsuarioRegistrado = localStorage.getItem("nombreUsuario");
-      var contraseniaRegristrada = localStorage.getItem("contrasenia");
+    //Obtengo los valores registrados con LocalStorage
+    var nombreUsuarioRegistrado = localStorage.getItem("nombreUsuario");
+    var contraseniaRegristrada = localStorage.getItem("contrasenia");
 
-      if(nombreUsuario === nombreUsuarioRegistrado && contrasenia === contraseniaRegristrada){
-        alert("Usted inicio sesion exitosamente!");
-        window.location.href = "TF-DiezJuan-Adivinanzas2.html"; //Redirige al juego (ADIVINANZAS2)
-      }   else {
-        alert("Nombre de usuario o constraseña incorrectos");
+    if(nombreUsuario === nombreUsuarioRegistrado && contrasenia === contraseniaRegristrada){
+      // Mostrar mensaje de éxito
+      Swal.fire({
+      title: 'Inicio de sesion exitoso',
+      text: 'Será redirigido al juego de adivinanzas',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonText: 'JUGAR',
+      }).then((result) => {
+      if (result.isConfirmed) {
+      window.location.href = 'TF-DiezJuan-Adivinanzas2.html';
       }
+      });
+
+    }else {
+      Swal.fire('Error', 'Usuario o contraseña incorrectos.', 'error');
+      return;
+    }
 
   });
 });
