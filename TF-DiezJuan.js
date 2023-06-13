@@ -2,49 +2,75 @@
 
 // JS de FORMULARIO DE REGISTRO-------------------
 $(document).ready(function() {
-  'use strict';
+ $('#formulario').submit(function(event){
+  event.preventDefault();
 
-  // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
-  var forms = $('.needs-validation');
+    var nombre = $("#nombre").val();
+    var apellido = $("#apellido").val();
+    var edad = $("#edad").val();
+    var email = $("#email").val();
+    var nombreUsuario = $("#nombreUsuario").val();
+    var contrasenia = $("#contrasenia").val();
+    var rcontrasenia = $("#rcontrasenia").val();
 
-  // Bucle sobre ellos y evitar el envío
-  forms.each(function() {
-    $(this).on('submit', function(event) {
-
-      if (!this.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
+    // Validar campos completos
+    if (nombre === '' || apellido === '' || edad === '' || email === '' || nombreUsuario === '' || contrasenia === '' || rcontrasenia === '') {
+      Swal.fire('Error', 'Por favor, complete todos los campos.', 'error');
+      return;
+    }
+  
+    // Validar la edad
+    if (edad < 18 || edad > 100) {
+      Swal.fire('Error', 'La edad debe estar entre 18 y 100 años.', 'error');
+      return;
+    }
+  
+    // Validar el formato del email
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Swal.fire('Error', 'Ingrese un email válido.', 'error');
+      return;
+    }
+  
+    // Validar repeticion de contraseña
+    if (contrasenia !== rcontrasenia) {
+      Swal.fire('Error', 'La contraseñas ingresadas no coinciden', 'error');
+      return;
+    }
+  
+  
+    //Guarda los datos de inicio de sesion en localstorage
+    localStorage.setItem("nombreUsuario",nombreUsuario);
+    localStorage.setItem("contrasenia",contrasenia);
+  
+    // Limpiar los campos del formulario
+    $('#formulario')[0].reset();
+  
+    // Mostrar mensaje de éxito
+    Swal.fire({
+    title: 'Registro exitoso',
+    text: 'Los datos de registro se han guardado exitosamente.',
+    icon: 'success',
+    showCancelButton: false,
+    confirmButtonText: 'Volver a Inicio',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = 'TF-DiezJuan-Menu.html';
       }
-
-
-      $(this).addClass('was-validated');
     });
+
   });
 });
 
 
-$('#boton').click(function() {  
-  var nombre = $("#nombre").val();
-  var apellido = $("#apellido").val();
-  var edad = $("#edad").val();
-  var email = $("#email").val();
-  var nombreUsuario = $("#nombreUsuario").val();
-  var contrasenia = $("#contrasenia").val();
-  var rcontrasenia = $("#rcontrasenia").val();
-
-  localStorage.setItem("nombreUsuario",nombreUsuario);
-  localStorage.setItem("contrasenia",contrasenia);
-  
-});
-
-$('#botonMenu').click(function() {  //Validacion boton para volver al menu
+//Validacion boton para volver a inicio
+$('#botonMenu').click(function() {  
   window.location.href = "TF-DiezJuan-Menu.html";
 });
 
 
+//Select llamando a la api de paises del mundo
 $(document).ready(function() {
-    
-  //Select llamando a la api de paises del mundo
     $.ajax({
       url: "https://restcountries.com/v2/all",
       type: "GET",
@@ -66,10 +92,8 @@ $(document).ready(function() {
 });
 
 
-
+//Select llamando a las provincias de ARG
 $(document).ready(function() {
-
-  //Select llamando a las provincias de ARG
     $.ajax({
       url: "https://apis.datos.gob.ar/georef/api/provincias",
       type: "GET",
@@ -91,10 +115,8 @@ $(document).ready(function() {
 });
 
 
-
+//Select llamando a las ciudades de La Pampa
 $(document).ready(function() {
-
-  //Select llamando a las ciudades de La Pampa
     $.ajax({
       url: "https://apis.datos.gob.ar/georef/api/municipios?provincia=42&campos=id,nombre&max=100",
       type: "GET",
