@@ -292,3 +292,148 @@ $(document).ready(function() {
 });
 
 
+
+// JS de JUEGO DE PREGUNTAS-------------------
+
+//INICIO DE SESION EN PREGUNTAS1
+$(document).ready(function() {
+  $('#formularioLogin2').submit(function(event) {
+    event.preventDefault();
+
+    //Obtengo los valores ingresados
+    var nombreUsuario = $("#nombreUsuario").val();
+    var contrasenia = $("#contrasenia").val();
+
+    //Obtengo los valores registrados con LocalStorage
+    var nombreUsuarioRegistrado = localStorage.getItem("nombreUsuario");
+    var contraseniaRegristrada = localStorage.getItem("contrasenia");
+
+    if(nombreUsuario === nombreUsuarioRegistrado && contrasenia === contraseniaRegristrada){
+      // Mostrar mensaje de éxito
+      Swal.fire({
+      title: 'Inicio de sesion exitoso',
+      text: 'Será redirigido al juego de preguntas',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonText: 'JUGAR',
+      }).then((result) => {
+      if (result.isConfirmed) {
+      window.location.href = 'TF-DiezJuan-Preguntas2.html';
+      }
+      });
+
+    }else {
+      Swal.fire('Error', 'Usuario o contraseña incorrectos.', 'error');
+      return;
+    }
+
+  });
+});
+
+
+//ARCHIVO PREGUNTAS 2
+$(document).ready(function() {
+
+
+  //RADIOS
+  $('input[name="radioP1"]').change(function() {
+    // Desactivar todos los radios
+    $('input[name="radioP1"]').not(':checked').prop('disabled', true);
+    
+    // Activar el radio seleccionado
+    $(this).prop('disabled', false);
+  });
+
+  $('input[name="radioP2"]').change(function() {
+    // Desactivar todos los radios
+    $('input[name="radioP2"]').not(':checked').prop('disabled', true);
+    
+    // Activar el radio seleccionado
+    $(this).prop('disabled', false);
+  });
+
+  $('input[name="radioP3"]').change(function() {
+    // Desactivar todos los radios
+    $('input[name="radioP3"]').not(':checked').prop('disabled', true);
+    
+    // Activar el radio seleccionado
+    $(this).prop('disabled', false);
+  });
+
+
+  //RESULTADO
+  $('#Presultado').click(function() { 
+
+    //Toma el valor del radio seleccionado
+    var opSeleccionadaP1 = $("input[name='radioP1']:checked").val();  
+    var opSeleccionadaP2 = $("input[name='radioP2']:checked").val();  
+    var opSeleccionadaP3 = $("input[name='radioP3']:checked").val();  
+
+    //Doy puntuacion
+    if(opSeleccionadaP1 === "PARANÁ"){
+      var Ppuntuacion1 = 1; 
+      $('#PresParcial1').addClass('correcto'); //Le agrego la clase de correcto
+      $('#PresParcial1').text("CORRECTO");
+
+    }else {
+      Ppuntuacion1 = 0;
+      $('#PresParcial1').addClass('incorrecto'); //Le agrego la clase de incorrecto
+      $('#PresParcial1').text("INCORRECTO, LA RESPUESTA CORRECTA ES PARANÁ");
+    }
+
+    if(opSeleccionadaP2 === "ÑANDÚ"){
+      var Ppuntuacion2 = 1;
+      $('#PresParcial2').addClass('correcto');
+      $('#PresParcial2').text("CORRECTO");
+
+    }else {
+      Ppuntuacion2 = 0;
+      $('#PresParcial2').addClass('incorrecto');
+      $('#PresParcial2').text("INCORRECTO, LA RESPUESTA CORRECTA ES ÑANDÚ");
+
+    }
+
+    if(opSeleccionadaP3 === "CAFÉ"){
+      var Ppuntuacion3 = 1;
+      $('#PresParcial3').addClass('correcto');
+      $('#PresParcial3').text("CORRECTO");
+
+    }else {
+      Ppuntuacion3 = 0;
+      $('#PresParcial3').addClass('incorrecto');
+      $('#PresParcial3').text("INCORRECTO, LA RESPUESTA CORRECTA ES CAFÉ");
+
+    }
+
+
+    var Presultado = Ppuntuacion1 + Ppuntuacion2 + Ppuntuacion3;
+      $('#Pres').addClass('mensaje'); //Le agrego la clase al mensaje del resultado
+
+      //Segun el resultado doy el mensaje y tambien le agrego boton de reiniciio de juego
+      if(resultado === 0){
+        $('#Pres').html("¡VUELVE A INTENTARLO! <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
+      }
+      if(resultado === 1){
+        $('#Pres').html(":( <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
+      }
+      if(resultado === 2){
+        $('#Pres').html("¡BIEN! <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
+      }
+      if(resultado === 3){
+        $('#Pres').html("¡EXCELENTE! <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
+      }
+
+  });
+
+  //Funcion de reinicio de juego
+  function reiniciarJuego(){
+    $('#resParcial1').removeClass('correcto');
+    $('#resParcial1').removeClass('incorrecto');
+    $('#resParcial2').removeClass('correcto');
+    $('#resParcial2').removeClass('incorrecto');
+    $('#resParcial3').removeClass('correcto');
+    $('#resParcial3').removeClass('incorrecto');
+    $('#res').removeClass('mensaje'); 
+  }
+
+});
