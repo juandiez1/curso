@@ -177,128 +177,117 @@ $(document).ready(function() {
   });
 });
 
+//Validacion boton para volver a formulario de registro
+$('#registro').click(function() {  
+  window.location.href = "TF-DiezJuan-Formulario.html";
+});
+
 
 
 //ARCHIVO ADIVINANZAS 2
 $(document).ready(function() {
 
 
-  //ADIVINANZA 1
-  var intentos1 = 0;
-  var puntuacion1 = 10;
-
-  $('#check1').click(function() {
+  //RADIOS
+  $('input[name="radioA1"]').change(function() {
+    // Desactivar todos los radios
+    $('input[name="radioA1"]').not(':checked').prop('disabled', true);
     
-    var opSeleccionada1 = $("input[name='opcion1']:checked").val();  //Toma el valor del radio seleccionado
-
-
-    if(opSeleccionada1){
-
-      if(opSeleccionada1 === "PARANÁ"){
-        alert("CORRECTO");
-        if(intentos1 === 0){
-        alert("Su puntuacion es: " + puntuacion1 + ". Continue con la siguiente adivinanza");
-        } else if(intentos1 === 1){
-        puntuacion1=5;
-        alert("Su puntuacion es: " + puntuacion1 + ". Continue con la siguiente adivinanza");
-        } else {
-        puntuacion1=0;
-        alert("Su puntuacion es: " + puntuacion1 + ". Continue con la siguiente adivinanza");
-        }
-
-      } else {
-      alert("INCORRECTO")
-      }
-
-      intentos1++;
-
-    } else{
-    alert("Seleccione una opcion antes de presionar CHECK")
-    }
-
+    // Activar el radio seleccionado
+    $(this).prop('disabled', false);
   });
 
-
-  //ADIVINANZA 2
-  var intentos2 = 0;
-  var puntuacion2 = 10;
-
-  $('#check2').click(function() {
+  $('input[name="radioA2"]').change(function() {
+    // Desactivar todos los radios
+    $('input[name="radioA2"]').not(':checked').prop('disabled', true);
     
-    var opSeleccionada2 = $("input[name='opcion2']:checked").val();  //Toma el valor del radio seleccionado
-
-
-    if(opSeleccionada2){
-
-      if(opSeleccionada2 === "ÑANDÚ"){
-        alert("CORRECTO");
-        if(intentos2 === 0){
-        alert("Su puntuacion es: " + puntuacion2 + ". Continue con la siguiente adivinanza");
-        } else if(intentos2 === 1){
-        puntuacion2=5;
-        alert("Su puntuacion es: " + puntuacion2 + ". Continue con la siguiente adivinanza");
-        } else {
-        puntuacion2=0;
-        alert("Su puntuacion es: " + puntuacion2 + ". Continue con la siguiente adivinanza");
-        }
-
-      } else {
-      alert("INCORRECTO")
-      }
-
-      intentos2++;
-
-    } else{
-    alert("Seleccione una opcion antes de presionar CHECK")
-    }
-
+    // Activar el radio seleccionado
+    $(this).prop('disabled', false);
   });
 
-
-
-  //ADIVINANZA 3
-  var intentos3 = 0;
-  var puntuacion3 = 10;
-
-  $('#check3').click(function() {
+  $('input[name="radioA3"]').change(function() {
+    // Desactivar todos los radios
+    $('input[name="radioA3"]').not(':checked').prop('disabled', true);
     
-    var opSeleccionada3 = $("input[name='opcion3']:checked").val();  //Toma el valor del radio seleccionado
-
-
-    if(opSeleccionada3){
-
-      if(opSeleccionada3 === "CAFÉ"){
-        alert("CORRECTO");
-        if(intentos3 === 0){
-        alert("Su puntuacion es: " + puntuacion3 + ". Continue con la siguiente adivinanza");
-        } else if(intentos3 === 1){
-        puntuacion3=5;
-        alert("Su puntuacion es: " + puntuacion3 + ". Continue con la siguiente adivinanza");
-        } else {
-        puntuacion3=0;
-        alert("Su puntuacion es: " + puntuacion3 + ". Continue con la siguiente adivinanza");
-        }
-
-      } else {
-      alert("INCORRECTO")
-      }
-
-      intentos3++;
-
-    } else{
-    alert("Seleccione una opcion antes de presionar CHECK")
-    }
-
+    // Activar el radio seleccionado
+    $(this).prop('disabled', false);
   });
 
 
   //RESULTADO
   $('#resultado').click(function() { 
 
+    //Toma el valor del radio seleccionado
+    var opSeleccionada1 = $("input[name='radioA1']:checked").val();  
+    var opSeleccionada2 = $("input[name='radioA2']:checked").val();  
+    var opSeleccionada3 = $("input[name='radioA3']:checked").val();  
+
+    //Doy puntuacion
+    if(opSeleccionada1 === "PARANÁ"){
+      var puntuacion1 = 1; 
+      $('#resParcial1').addClass('correcto'); //Le agrego la clase de correcto
+      $('#resParcial1').text("CORRECTO");
+
+    }else {
+      puntuacion1 = 0;
+      $('#resParcial1').addClass('incorrecto'); //Le agrego la clase de incorrecto
+      $('#resParcial1').text("INCORRECTO, LA RESPUESTA CORRECTA ES PARANÁ");
+    }
+
+    if(opSeleccionada2 === "ÑANDÚ"){
+      var puntuacion2 = 1;
+      $('#resParcial2').addClass('correcto');
+      $('#resParcial2').text("CORRECTO");
+
+    }else {
+      puntuacion2 = 0;
+      $('#resParcial2').addClass('incorrecto');
+      $('#resParcial2').text("INCORRECTO, LA RESPUESTA CORRECTA ES ÑANDÚ");
+
+    }
+
+    if(opSeleccionada3 === "CAFÉ"){
+      var puntuacion3 = 1;
+      $('#resParcial3').addClass('correcto');
+      $('#resParcial3').text("CORRECTO");
+
+    }else {
+      puntuacion3 = 0;
+      $('#resParcial3').addClass('incorrecto');
+      $('#resParcial3').text("INCORRECTO, LA RESPUESTA CORRECTA ES CAFÉ");
+
+    }
+
+
     var resultado = puntuacion1 + puntuacion2 + puntuacion3;
-    $('#res').text("La puntuacion final es: " + resultado);
+      $('#res').addClass('mensaje'); //Le agrego la clase al mensaje del resultado
+
+      //Segun el resultado doy el mensaje y tambien le agrego boton de reiniciio de juego
+      if(resultado === 0){
+        $('#res').html("¡VUELVE A INTENTARLO! <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
+      }
+      if(resultado === 1){
+        $('#res').html(":( <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
+      }
+      if(resultado === 2){
+        $('#res').html("¡BIEN! <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
+      }
+      if(resultado === 3){
+        $('#res').html("¡EXCELENTE! <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
+      }
+
   });
 
+  //Funcion de reinicio de juego
+  function reiniciarJuego(){
+    $('#resParcial1').removeClass('correcto');
+    $('#resParcial1').removeClass('incorrecto');
+    $('#resParcial2').removeClass('correcto');
+    $('#resParcial2').removeClass('incorrecto');
+    $('#resParcial3').removeClass('correcto');
+    $('#resParcial3').removeClass('incorrecto');
+    $('#res').removeClass('mensaje'); 
+  }
 
 });
 

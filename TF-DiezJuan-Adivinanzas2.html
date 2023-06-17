@@ -14,9 +14,18 @@
 
     <body>
  
-        <h1>JUEGO DE ADIVINANZAS</h1>
+        </div>
+        <div class="col-12">
+        <button type="submit" id="botonMenu" class="btn btn-primary volverMenu">Volver a Menu</button>
+        </div>
 
-        <h3>Bienvenido, este es el juego de las adivinanzas,tendras tres intentos ya que tendras tres opciones para seleccionar, si aciertas en el primer intento tu puntuacion será de 10 puntos por adivinanza, si aciertas en el segundo intento tu puntuacion será de 5 puntos por adivinanza, si aciertas en el tercer intento tu puntuacion será de 0 puntos por adivinanza. Recuerda marcar la opcion correcta, y seguido CHECK para validarla. BUENA SUERTE!</h3>
+        <div class="alert alert-info banner">
+            <strong>¡BIENVENIDO!</strong><br/>
+            Este es el juego de las adivinanzas, es muy simple, para jugar deberas tildar la respuesta que creas correcta y por ultimo clickear en RESULTADO. 
+            <br/>
+            ¡MUCHA SUERTE!
+        </div>
+        
 
         <form id="Adivinanzas" class="row g-3 needs-validation">
 
@@ -29,20 +38,20 @@
                 ¿Cuál es mi nombre?</p>
 
                 <div class="form-check">
-                <input type="radio" id="A1op1" value="PARANÁ" class="form-check-input">
+                <input type="radio" id="A1op1" name="radioA1" value="PARANÁ" class="form-check-input">
                 <label class="form-check-label" for="A1op1">PARANÁ</label>
                 </div>
                 <div class="form-check">
-                <input type="radio" id="A1op2" value="SALADO" class="form-check-input">
+                <input type="radio" id="A1op2" name="radioA1" value="SALADO" class="form-check-input">
                 <label class="form-check-label" for="A1op2">SALADO</label>
                 </div>
                 <div class="form-check">
-                <input type="radio" id="A1op3" value="URUGUAY" class="form-check-input">
+                <input type="radio" id="A1op3" name="radioA1" value="URUGUAY" class="form-check-input">
                 <label class="form-check-label" for="A1op3">URUGUAY</label>
                 </div>
 
-                <button type="button" id="check1" class="btn btn-primary">CHECK</button>
-                <br/>
+                <div id="resParcial1" class="resultado"></div>
+
             </div>
 
             <div class="container">
@@ -54,20 +63,19 @@
                 ¿Qué animal soy?</p>
 
                 <div class="form-check">
-                <input type="radio" id="A2op1" value="GUANACO" class="form-check-input">
+                <input type="radio" id="A2op1" name="radioA2" value="GUANACO" class="form-check-input">
                 <label class="form-check-label" for="A2op1">GUANACO</label>
                 </div>
                 <div class="form-check">
-                <input type="radio" id="A2op2" value="ÑANDÚ" class="form-check-input">
+                <input type="radio" id="A2op2" name="radioA2" value="ÑANDÚ" class="form-check-input">
                 <label class="form-check-label" for="A2op2">ÑANDÚ</label>
                 </div>
                 <div class="form-check">
-                <input type="radio" id="A2op3" value="YACARÉ" class="form-check-input">
+                <input type="radio" id="A2op3" name="radioA2" value="YACARÉ" class="form-check-input">
                 <label class="form-check-label" for="A2op3">YACARÉ</label>
                 </div>
-                
-                <button type="button" id="check2" class="btn btn-primary">CHECK</button>
-                <br/>
+               
+                <div id="resParcial2" class="resultado"></div>
 
             </div>
 
@@ -80,25 +88,24 @@
                 ¿Qué soy?</p>
 
                 <div class="form-check">
-                <input type="radio" id="A3op1" value="MATE" class="form-check-input">
+                <input type="radio" id="A3op1" name="radioA3" value="MATE" class="form-check-input">
                 <label class="form-check-label" for="A2op1">MATE</label>
                 </div>
                 <div class="form-check">
-                <input type="radio" id="A3op2" value="CAFÉ" class="form-check-input">
+                <input type="radio" id="A3op2" name="radioA3" value="CAFÉ" class="form-check-input">
                 <label class="form-check-label" for="A2op2">CAFÉ</label>
                 </div>
                 <div class="form-check">
-                <input type="radio" id="A3op3" value="TÉ" class="form-check-input">
+                <input type="radio" id="A3op3" name="radioA3" value="TÉ" class="form-check-input">
                 <label class="form-check-label" for="A2op3">TÉ</label>
                 </div>
 
-                <button type="button" id="check3" class="btn btn-primary">CHECK</button>
-                <br/>
+                <div id="resParcial3" class="resultado"></div>
 
             </div>
             
             <button type="button" id="resultado" class="btn btn-primary">RESULTADO</button>
-            <div id="res"></div>
+            <div id="res" class="resultado"></div>
 
         </form>
 

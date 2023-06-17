@@ -10,3 +10,62 @@
     list-style:none;
     display: inline-flex;
 }
+
+.resultado {
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+.resultado.correcto {
+    background-color: #c3e6cb;
+    color: #155724;
+  }
+
+.resultado.incorrecto {
+    background-color: #f8d7da;
+    color: #721c24;
+    }
+
+.resultado.mensaje {
+    background-color: #3096d6;
+    color: #080533;
+}
+
+.banner {
+    padding: 40px;
+    background-color: #f8f9fa;
+    color: #343a40;
+    font-size: 18px;
+    text-align: center;
+}
+
+.volverMenu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.navbar {
+    min-height: 80px; /* Ajusta la altura mínima de la barra de navegación */
+  }
+
+  .navbar-brand {
+    padding: 10px; /* Ajusta el espacio interior de la marca de la barra de navegación */
+  }
+
+  .navbar-nav {
+    margin: 0 auto; /* Centra los elementos del menú horizontalmente */
+    display: flex; /* Añade una visualización flexible */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    }
+
+  .nav-item {
+    padding: 0 10px; /* Ajusta el espacio horizontal entre los elementos del menú */
+  }
+
+  .nav-link {
+    padding: 20px 10px; /* Ajusta el espacio interior de los enlaces del menú */
+  }
