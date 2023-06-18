@@ -187,7 +187,6 @@ $('#registro').click(function() {
 //ARCHIVO ADIVINANZAS 2
 $(document).ready(function() {
 
-
   //RADIOS
   $('input[name="radioA1"]').change(function() {
     // Desactivar todos los radios
@@ -331,9 +330,8 @@ $(document).ready(function() {
 });
 
 
-//ARCHIVO PREGUNTAS 2
+//ARCHIVO PREGUNTAS 2 (1° PREGUNTA)
 $(document).ready(function() {
-
 
   //RADIOS
   $('input[name="radioP1"]').change(function() {
@@ -344,6 +342,40 @@ $(document).ready(function() {
     $(this).prop('disabled', false);
   });
 
+  //RESULTADO
+  $('#P1resultado').click(function() { 
+
+    //Toma el valor del radio seleccionado
+    var opSeleccionada1 = $("input[name='radioP1']:checked").val();   
+
+    //Doy puntuacion
+    if(opSeleccionada1 === "BUENOS AIRES"){
+      var puntuacion1 = 1; 
+      localStorage.setItem("flag1", "1"); //Guardo una bandera en local storage para verla en la siguiente pregunta
+      $('#P1resParcial').addClass('correcto'); //Le agrego la clase de correcto
+      $('#P1resParcial').text("CORRECTO");
+
+    }else {
+      puntuacion1 = 0;
+      localStorage.setItem("flag1", "0"); //Guardo una bandera en local storage para verla en la siguiente pregunta
+      $('#P1resParcial').addClass('incorrecto'); //Le agrego la clase de incorrecto
+      $('#P1resParcial').text("INCORRECTO, LA RESPUESTA CORRECTA ES BUENOS AIRES");
+    }
+    
+
+    var resultado = puntuacion1;
+    $('#P1res').addClass('mensaje'); //Le agrego la clase al mensaje del resultado
+    
+    //Muestro el resultado parcial y agrego boton de siguiente pregunta y redirecciono
+    $('#P1res').html("SU PUNTUACIÓN PARCIAL ES: " + resultado + "/3").append('<br/> <a class="btn btn-primary" href="TF-DiezJuan-Preguntas3.html">SIGUIENTE PREGUNTA</button>');
+
+  });
+});
+
+//ARCHIVO PREGUNTAS 3 (2° PREGUNTA)
+$(document).ready(function() {
+
+  //RADIOS
   $('input[name="radioP2"]').change(function() {
     // Desactivar todos los radios
     $('input[name="radioP2"]').not(':checked').prop('disabled', true);
@@ -352,6 +384,65 @@ $(document).ready(function() {
     $(this).prop('disabled', false);
   });
 
+  //RESULTADO
+  $('#P2resultado').click(function() { 
+
+    //Recupero el valor de flag de la preg anterior con localstorage
+    var flag = localStorage.getItem("flag1"); 
+    if(flag === "1"){
+      puntuacion1 = 1;
+    } else if(flag === "0"){
+      puntuacion1 = 0;
+    }
+
+    //Toma el valor del radio seleccionado
+    var opSeleccionada2 = $("input[name='radioP2']:checked").val();   
+
+    //Doy puntuacion
+    if(opSeleccionada2 === "FÚTBOL"){
+      var puntuacion2 = 1; 
+      localStorage.setItem("flag2", "1"); //Guardo una bandera en local storage para verla en la siguiente pregunta
+      $('#P2resParcial').addClass('correcto'); //Le agrego la clase de correcto
+      $('#P2resParcial').text("CORRECTO");
+
+    }else {
+      puntuacion2 = 0;
+      localStorage.setItem("flag2", "0"); //Guardo una bandera en local storage para verla en la siguiente pregunta
+      $('#P2resParcial').addClass('incorrecto'); //Le agrego la clase de incorrecto
+      $('#P2resParcial').text("INCORRECTO, LA RESPUESTA CORRECTA ES FÚTBOL");
+    }
+    
+    var resultado =  puntuacion1 + puntuacion2;
+    $('#P2res').addClass('mensaje'); //Le agrego la clase al mensaje del resultado
+    
+    //Muestro el resultado parcial y agrego boton de siguiente pregunta y redirecciono
+    $('#P2res').html("SU PUNTUACIÓN PARCIAL ES: " + resultado + "/3").append('<br/> <a class="btn btn-primary" href="TF-DiezJuan-Preguntas4.html">SIGUIENTE PREGUNTA</button>');
+
+  });
+});
+
+
+//ARCHIVO PREGUNTAS 4 (3° PREGUNTA)
+$(document).ready(function() {
+
+  //Recupero el valor de flag de la preg anterior con localstorage
+  var flag1 = localStorage.getItem("flag1"); 
+  var flag2 = localStorage.getItem("flag2");
+  if(flag1 === "1" && flag2 === "1"){
+    puntuacion1 = 1;
+    puntuacion2 = 1;
+  } else if(flag1 === "0" && flag2 === "0"){
+    puntuacion1 = 0;
+    puntuacion2 = 0;
+  } else if(flag1 === "1" && flag2 === "0"){
+    puntuacion1 = 1;
+    puntuacion2 = 0;
+  } else if(flag1 === "0" && flag2 === "1"){
+    puntuacion1 = 0;
+    puntuacion2 = 1;
+  }
+
+  //RADIOS
   $('input[name="radioP3"]').change(function() {
     // Desactivar todos los radios
     $('input[name="radioP3"]').not(':checked').prop('disabled', true);
@@ -360,80 +451,42 @@ $(document).ready(function() {
     $(this).prop('disabled', false);
   });
 
-
   //RESULTADO
-  $('#Presultado').click(function() { 
+  $('#P3resultado').click(function() { 
 
     //Toma el valor del radio seleccionado
-    var opSeleccionadaP1 = $("input[name='radioP1']:checked").val();  
-    var opSeleccionadaP2 = $("input[name='radioP2']:checked").val();  
-    var opSeleccionadaP3 = $("input[name='radioP3']:checked").val();  
+    var opSeleccionada3 = $("input[name='radioP3']:checked").val();   
 
     //Doy puntuacion
-    if(opSeleccionadaP1 === "PARANÁ"){
-      var Ppuntuacion1 = 1; 
-      $('#PresParcial1').addClass('correcto'); //Le agrego la clase de correcto
-      $('#PresParcial1').text("CORRECTO");
+    if(opSeleccionada3 === "PESO"){
+      var puntuacion3 = 1; 
+      $('#P3resParcial').addClass('correcto'); //Le agrego la clase de correcto
+      $('#P3resParcial').text("CORRECTO");
 
     }else {
-      Ppuntuacion1 = 0;
-      $('#PresParcial1').addClass('incorrecto'); //Le agrego la clase de incorrecto
-      $('#PresParcial1').text("INCORRECTO, LA RESPUESTA CORRECTA ES PARANÁ");
+      puntuacion3 = 0;
+      $('#P3resParcial').addClass('incorrecto'); //Le agrego la clase de incorrecto
+      $('#P3resParcial').text("INCORRECTO, LA RESPUESTA CORRECTA ES PESO");
     }
 
-    if(opSeleccionadaP2 === "ÑANDÚ"){
-      var Ppuntuacion2 = 1;
-      $('#PresParcial2').addClass('correcto');
-      $('#PresParcial2').text("CORRECTO");
+    
+    var resultado =  puntuacion1 + puntuacion2 + puntuacion3;
+    $('#P3res').addClass('mensaje'); //Le agrego la clase al mensaje del resultado
+    
 
-    }else {
-      Ppuntuacion2 = 0;
-      $('#PresParcial2').addClass('incorrecto');
-      $('#PresParcial2').text("INCORRECTO, LA RESPUESTA CORRECTA ES ÑANDÚ");
-
+    //Segun el resultado doy el mensaje y tambien le agrego boton de reiniciio de juego
+    if(resultado === 0){
+      $('#P3res').html("¡VUELVE A INTENTARLO! <br/> SU PUNTUACIÓN FINAL ES: " + resultado + "/3").append('<br/> <a class="btn btn-primary" href="TF-DiezJuan-Preguntas2.html">REINICIAR JUEGO</button>');
     }
-
-    if(opSeleccionadaP3 === "CAFÉ"){
-      var Ppuntuacion3 = 1;
-      $('#PresParcial3').addClass('correcto');
-      $('#PresParcial3').text("CORRECTO");
-
-    }else {
-      Ppuntuacion3 = 0;
-      $('#PresParcial3').addClass('incorrecto');
-      $('#PresParcial3').text("INCORRECTO, LA RESPUESTA CORRECTA ES CAFÉ");
-
+    if(resultado === 1){
+      $('#P3res').html(":( <br/> SU PUNTUACIÓN FINAL ES: " + resultado + "/3").append('<br/> <a class="btn btn-primary" href="TF-DiezJuan-Preguntas2.html">REINICIAR JUEGO</button>');
     }
-
-
-    var Presultado = Ppuntuacion1 + Ppuntuacion2 + Ppuntuacion3;
-      $('#Pres').addClass('mensaje'); //Le agrego la clase al mensaje del resultado
-
-      //Segun el resultado doy el mensaje y tambien le agrego boton de reiniciio de juego
-      if(resultado === 0){
-        $('#Pres').html("¡VUELVE A INTENTARLO! <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
-      }
-      if(resultado === 1){
-        $('#Pres').html(":( <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
-      }
-      if(resultado === 2){
-        $('#Pres').html("¡BIEN! <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
-      }
-      if(resultado === 3){
-        $('#Pres').html("¡EXCELENTE! <br/> SU PUNTUACIÓN ES: " + resultado + "/3").append('<br/> <button class="btn btn-primary" onclick="reiniciarJuego()">REINICIAR JUEGO</button>');
-      }
+    if(resultado === 2){
+      $('#P3res').html("¡BIEN! <br/> SU PUNTUACIÓN FINAL ES: " + resultado + "/3").append('<br/> <a class="btn btn-primary" href="TF-DiezJuan-Preguntas2.html">REINICIAR JUEGO</button>');
+    }
+    if(resultado === 3){
+      $('#P3res').html("¡EXCELENTE! <br/> SU PUNTUACIÓN FINAL ES: " + resultado + "/3").append('<br/> <a class="btn btn-primary" href="TF-DiezJuan-Preguntas2.html">REINICIAR JUEGO</button>');
+    }
 
   });
-
-  //Funcion de reinicio de juego
-  function reiniciarJuego(){
-    $('#resParcial1').removeClass('correcto');
-    $('#resParcial1').removeClass('incorrecto');
-    $('#resParcial2').removeClass('correcto');
-    $('#resParcial2').removeClass('incorrecto');
-    $('#resParcial3').removeClass('correcto');
-    $('#resParcial3').removeClass('incorrecto');
-    $('#res').removeClass('mensaje'); 
-  }
-
 });
